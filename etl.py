@@ -4,12 +4,18 @@ from sql_queries import copy_table_queries, insert_table_queries
 
 
 def load_staging_tables(cur, conn):
+    """Receives database connections 
+    and loads data into stages tables
+    """
     for query in copy_table_queries:
         cur.execute(query)
         conn.commit()
 
 
 def insert_tables(cur, conn):
+    """Receives database connections 
+    and loads data to final tables: dimensions and fact
+    """
     for query in insert_table_queries:
         cur.execute(query)
         conn.commit()
